@@ -1,1 +1,1 @@
-#readme
+<h1>This is a basic Project using react and django</h1>

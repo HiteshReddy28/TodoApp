@@ -1,0 +1,17 @@
+chat-app/node_modules
+
+
+backend/.env
+backend/__pycache__/
+backend/*.pyc
+backend/*.sqlite3
+backend/*.log
+backend/db.
+
+**/__pycache__/
+**/*.pyc
+
+**/migrations/
+!**/migrations/__init__.py
+
+env
