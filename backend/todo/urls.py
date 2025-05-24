@@ -7,5 +7,6 @@ urlpatterns = [
     path("get_user_todo/<int:id>",views.get_todo,name = "get_todo"),
     path('markUserTaskCompleted/<int:userid>/<int:taskid>',views.updateCompleted,name="taskcompleted"),
     path('user/',views.get_user, name='get_user'),
+    path('aisuggestions/',views.getAiSuggestions, name='getairesponse'),
     path("get-csrf-token/", views.get_csrf_token, name="get_csrf_token"),
 ]

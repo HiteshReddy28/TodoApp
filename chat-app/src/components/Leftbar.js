@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import TodoList from './todo'; // adjust path if needed
-
+import Aitodo from "./Todobot";
 
 const Main = ({ isAuthenticated, setIsAuthenticated, userid, setUserid }) => {
   const [tasks, setTasks] = useState([]);
@@ -89,60 +89,51 @@ const Main = ({ isAuthenticated, setIsAuthenticated, userid, setUserid }) => {
     }
   };
 
+  const addMultipleAITasks  = (aiTasks) => {
+        const newTasks = aiTasks.map(task => ({
+            id: Date.now() + Math.random(), // Add Math.random() for uniqueness if multiple are added quickly
+            title: task.title,
+            description: task.description,
+            completed: false,
+            updated_at: new Date().toISOString(),
+        }));
+        setTasks((prevTasks) => [...prevTasks, ...newTasks]);
+        alert("AI tasks added to your list!"); // Optional: user feedback
+    };
   return (
-    <div className="main-container">
-      <div className="leftbar-container">
-        <div className="leftbar">
-          <h1>Enter your to do title</h1>
-          <input
-            type="text"
-            value={Title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter title"
-          />
-          <h1>Enter Description</h1>
-          <input
-            type="text"
-            value={Description}
-            onChange={(e) => setDescription(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                addtask();
-              }
-            }}
-            placeholder="Describe"
-          />
-          <button onClick={addtask}>Add Task</button>
+   <div className="main-container">
+    <div className="leftbar-container"> {/* This will be your left column */}
+        <div className="manual-todo-input-section"> {/* A new div to group manual inputs */}
+            <h1>Enter your to do title</h1>
+            <input
+                type="text"
+                value={Title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter title"
+            />
+            <h1>Enter Description</h1>
+            <input
+                type="text"
+                value={Description}
+                onChange={(e) => setDescription(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        addtask();
+                    }
+                }}
+                placeholder="Describe"
+            />
+            <button onClick={addtask}>Add Task</button>
         </div>
-      </div>
-      {/* <div className="rightbar-container">
-        <h1>To do List</h1>
-        <br/>
-        <ul>
-  {tasks.map((task, index) => (
-    <li className="Todolist" key={index}>
-      <input
-        type="checkbox"
-        checked={task.completed}
-        onChange={() => handleTaskCompletion(task.id, !task.completed)}
-      />
-      <span style={{ textDecoration: task.completed ? "line-through" : "none" }}>
-        {task.title}
-      </span><br/>
-      <span className="Description-container">
-        <h1>{task.description}</h1>
-        <p>{task.updated_at}</p></span>
-    </li>
-  ))}
-</ul>
-      </div> */}
-      <div className="rightbar-container">
-  <h1>To do List</h1>
-  <br />
-  <TodoList tasks={tasks} handleTaskCompletion={handleTaskCompletion} />
-</div>
-
+        <Aitodo onApproveAITasks={addMultipleAITasks}/> {/* The Aitodo component will be below the manual input */}
     </div>
+
+    <div className="rightbar-container"> {/* This will be your right column */}
+        <h1>To do List</h1>
+        {/* <br /> - remove this, use CSS for spacing */}
+        <TodoList tasks={tasks} handleTaskCompletion={handleTaskCompletion} />
+    </div>
+</div>
   );
 };
 

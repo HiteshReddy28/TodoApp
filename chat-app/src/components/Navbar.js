@@ -25,7 +25,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, userid, setUserid}) => {
     return (
         <div className="navbar-container">
             <div className="navbar-logo">
-                <h1>To Do List</h1>
+                <h1>ToDoList</h1>
             </div>
             <div className="navbar-links">
                 <a href="#" className="nav-link">Home</a>

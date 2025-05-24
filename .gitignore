@@ -1,5 +1,7 @@
 chat-app/node_modules
-
+view
+expressbackend
+mongodb.yaml
 
 backend/.env
 backend/__pycache__/
