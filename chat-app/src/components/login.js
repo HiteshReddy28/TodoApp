@@ -72,6 +72,7 @@ function Login({ setIsAuthenticated, setUserid}){
 
   return (
     <div className='login-container'>
+
       <form className='login-box' onSubmit={authenticate}>
         <label>Username: </label>
         <input 

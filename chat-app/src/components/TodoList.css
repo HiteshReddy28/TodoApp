@@ -1,4 +1,4 @@
-.hover-overlay {
+/* .hover-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -20,4 +20,175 @@
     max-width: 400px;
     text-align: center;
   }
-  
+   */
+
+
+   /* TodoList.css */
+
+/* Styles for the <ul> containing the tasks */
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Styles for individual <li> elements within the TodoList component */
+.Todolist { /* Using the className "Todolist" from your JSX */
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* White background for each list item */
+    border: 1px solid #e0e0e0; /* Light grey border */
+    padding: 15px 20px; /* Generous padding */
+    margin-bottom: 12px; /* Space between tasks */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1.1em;
+    color: #333;
+    cursor: pointer; /* Indicate that items are clickable */
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.Todolist:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* More prominent shadow on hover */
+    background-color: #f0f0f0; /* Slight background change on hover */
+}
+
+/* Styles for the checkbox within each list item */
+.Todolist input[type="checkbox"] {
+    margin-right: 15px; /* Space between checkbox and text */
+    transform: scale(1.3); /* Make checkbox slightly larger */
+    accent-color: #007bff; /* Color the checkbox (modern browsers) */
+    cursor: pointer; /* Indicate it's clickable */
+    /* Align checkbox more precisely if needed, depending on font-size */
+    flex-shrink: 0; /* Prevent checkbox from shrinking */
+}
+
+/* Styles for the task title/description span */
+.Todolist span {
+    flex-grow: 1; /* Allow the span to take up available space */
+    word-break: break-word; /* Ensure long words break */
+    /* Add any other specific text styling here if needed */
+}
+
+/* Styles for the popup overlay when a task is clicked */
+.hover-overlay {
+    position: fixed; /* Fixed position to cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center; /* Center the popup horizontally */
+    align-items: center; /* Center the popup vertically */
+    z-index: 2000; /* Ensure it's above all other content (higher than navbar) */
+}
+
+/* Styles for the actual popup box */
+.hover-popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow for popup */
+    max-width: 500px; /* Limit popup width */
+    width: 90%; /* Responsive width */
+    text-align: left; /* Align text inside popup */
+    animation: fadeInScale 0.3s ease-out; /* Add a subtle animation */
+}
+
+.hover-popup h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Separator for title */
+    padding-bottom: 10px;
+}
+
+.hover-popup p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.6; /* Better readability for description */
+}
+
+.hover-popup p:last-child {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 20px;
+    text-align: right; /* Align date to the right */
+}
+
+/* Animation for the popup */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Responsive Adjustments for TodoList and Popup */
+@media (max-width: 768px) {
+    .Todolist {
+        padding: 12px 15px;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .Todolist input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.1);
+    }
+
+    .hover-popup {
+        padding: 20px;
+        max-width: 90%; /* Even wider on small screens */
+    }
+
+    .hover-popup h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .hover-popup p {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Todolist {
+        padding: 10px 12px;
+        font-size: 0.95em;
+        margin-bottom: 8px;
+        border-radius: 6px;
+    }
+
+    .Todolist input[type="checkbox"] {
+        margin-right: 8px;
+        transform: scale(1);
+    }
+
+    .hover-popup {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .hover-popup h2 {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+
+    .hover-popup p {
+        font-size: 0.9em;
+        margin-bottom: 6px;
+    }
+
+    .hover-popup p:last-child {
+        font-size: 0.8em;
+        margin-top: 15px;
+    }
+}

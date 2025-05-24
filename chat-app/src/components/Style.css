@@ -1,23 +1,100 @@
-.navbar-container{
-    display: flex;
-    justify-content: center;
-    gap: 60rem;
-    background-color: aquamarine;
-    align-items: center;
-    width: auto;
-    height: 5rem;
-}
-.navbar-links{
-    display: flex;
-    gap: 2.5rem;
-    font-size: 1.5rem;
+/* Basic Reset & Box-Sizing for consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar-links button{
-    background-color: aquamarine;
-    border-radius: 2rem;
-    cursor: pointer;
+/* Navbar Container Styles */
+.navbar-container {
+    background-color: #282c34; /* Dark background for the navbar */
+    color: white; /* White text color */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out logo and links */
+    align-items: center; /* Vertically center items */
+    padding: 15px 30px; /* Padding top/bottom and left/right */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    position: sticky; /* Makes the navbar stick to the top when scrolling */
+    top: 0;
+    z-index: 1000; /* Ensures the navbar stays on top of other content */
 }
+
+/* Navbar Logo Styles */
+.navbar-logo h1 {
+    font-size: 1.8em; /* Larger font size for the logo */
+    margin: 0; /* Remove default margin from h1 */
+    color: #61dafb; /* A bright, distinct color for the logo */
+    letter-spacing: 1px; /* Slightly spaced letters for the logo */
+}
+
+/* Navbar Links Container Styles */
+.navbar-links {
+    display: flex; /* Use flexbox for links */
+    gap: 20px; /* Space between navigation items */
+    align-items: center; /* Vertically center links */
+}
+
+/* Styles for individual navigation links (a and button) */
+.nav-link {
+    background: none; /* No background for buttons */
+    border: none; /* No border for buttons */
+    color: white; /* White text color for links */
+    font-size: 1.1em; /* Standard font size for links */
+    text-decoration: none; /* Remove underline from anchor tags */
+    padding: 8px 12px; /* Padding around text for clickable area */
+    cursor: pointer; /* Indicate clickable items */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+    border-radius: 4px; /* Slightly rounded corners for buttons */
+}
+
+.nav-link:hover {
+    color: #61dafb; /* Change text color on hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+}
+
+/* Specific styling for buttons if needed, although .nav-link covers most */
+.navbar-links button.nav-link {
+    /* You might add specific button styles here if they differ from anchor tags */
+    /* For example, a slightly bolder look */
+    font-weight: 500;
+}
+
+
+/* Optional: Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column; /* Stack logo and links vertically */
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    .navbar-logo {
+        margin-bottom: 15px; /* Space between logo and links when stacked */
+    }
+
+    .navbar-links {
+        flex-wrap: wrap; /* Allow links to wrap to the next line */
+        justify-content: center; /* Center links when wrapped */
+        gap: 10px; /* Smaller gap for wrapped items */
+    }
+
+    .nav-link {
+        padding: 6px 10px; /* Slightly smaller padding for smaller screens */
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo h1 {
+        font-size: 1.5em;
+    }
+
+    .navbar-links {
+        flex-direction: column; /* Stack links vertically on very small screens */
+        gap: 8px; /* Smaller gap */
+    }
+}
+
 .signUpContainer {
     display: flex;
     justify-content: center;

@@ -71,7 +71,7 @@
   justify-content: space-between;
   margin-top: 20px;
 }
-
+/* 
 .main-container{
   display: flex;
   justify-content: space-between;
@@ -179,4 +179,256 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0)
 
+} */
+
+/* Basic Reset & Box-Sizing for consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5; /* Light background for the whole page */
+}
+
+/* Main Container Styles - Establishes the two-column layout */
+.main-container {
+    display: flex; /* Use flexbox for left and right columns */
+    /* Removed align-items: center; and justify-content: space-between; from here
+       as the individual columns will handle their own alignment */
+    min-height: calc(100vh - 70px); /* Ensure it takes up remaining viewport height after navbar */
+    padding: 20px; /* Padding around the entire content area */
+    gap: 30px; /* Space between the left and right columns */
+}
+
+/* Leftbar Container Styles */
+.leftbar-container {
+    display: flex;
+    flex-direction: column; /* Stack children (manual input, Aitodo) vertically */
+    width: 40%; /* Adjust width as desired, e.g., 40% or 45% */
+    background-color: #ffffff; /* White background for the left column */
+    padding: 30px; /* More padding inside */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+    /* Removed height: 100vh; to allow content to dictate height, but can be added if fixed height is desired */
+    /* Removed align-items: center; and justify-content: center; from here
+       as the inner sections will handle their own centering */
+    gap: 30px; /* Space between manual input section and Aitodo component */
+}
+
+/* Styles for the manual todo input section within the leftbar */
+.manual-todo-input-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Take full width of leftbar-container */
+    gap: 15px; /* Space between inputs and buttons */
+    align-items: center; /* Center input elements horizontally */
+}
+
+.manual-todo-input-section h1 {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center; /* Center the headings within the input section */
+    width: 100%; /* Ensure heading takes full width for centering */
+}
+
+.manual-todo-input-section input[type="text"] {
+    width: 100%; /* Full width within its parent */
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.manual-todo-input-section input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+.manual-todo-input-section input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.manual-todo-input-section button {
+    background-color: #4CAF50; /* Green Add Task button */
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Make button full width within its container */
+    max-width: 250px; /* Limit button width */
+    margin-top: 10px;
+}
+
+.manual-todo-input-section button:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+}
+
+.manual-todo-input-section button:active {
+    transform: translateY(0);
+}
+
+
+/* Rightbar Container Styles */
+.rightbar-container {
+    flex: 1; /* Allows rightbar to take up remaining space */
+    background-color: #ffffff; /* White background for the right column */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    /* Removed height: 100vh; for more natural flow, but can be added back if needed */
+}
+
+.rightbar-container h1 {
+    font-size: 2em; /* Larger heading for the To Do List */
+    margin-bottom: 25px; /* More space below heading */
+    color: #333;
+    text-align: center; /* Center the list title */
+}
+
+.rightbar-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.rightbar-container li {
+    display: flex; /* Use flexbox for checkbox and text alignment */
+    align-items: center; /* Vertically align checkbox and text */
+    background-color: #f9f9f9; /* Slightly off-white for individual todo items */
+    border: 1px solid #e0e0e0;
+    padding: 15px 20px; /* More generous padding for each task */
+    margin-bottom: 12px; /* Space between tasks */
+    border-radius: 8px;
+    font-size: 1.1em; /* Slightly larger font for tasks */
+    color: #333;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.rightbar-container li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* More prominent shadow on hover */
+    background-color: #f0f0f0; /* Slight background change on hover */
+}
+
+.rightbar-container li input[type="checkbox"] {
+    margin-right: 15px; /* Space between checkbox and text */
+    transform: scale(1.3); /* Make checkbox slightly larger */
+    accent-color: #007bff; /* Color the checkbox (modern browsers) */
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .main-container {
+        flex-direction: column; /* Stack columns vertically on smaller desktops/laptops */
+        gap: 20px;
+    }
+
+    .leftbar-container,
+    .rightbar-container {
+        width: 100%; /* Take full width when stacked */
+        max-width: 700px; /* Optional: limit max width even when stacked */
+        margin: 0 auto; /* Center the stacked containers */
+    }
+
+    .leftbar-container {
+        margin-bottom: 20px; /* Add space between the two stacked containers */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 15px;
+    }
+
+    .leftbar-container,
+    .rightbar-container {
+        padding: 20px;
+    }
+
+    .manual-todo-input-section h1 {
+        font-size: 1.4em;
+    }
+
+    .manual-todo-input-section input[type="text"] {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+
+    .manual-todo-input-section button {
+        padding: 10px 20px;
+        font-size: 1em;
+        max-width: 200px;
+    }
+
+    .rightbar-container h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    .rightbar-container li {
+        padding: 12px 15px;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .rightbar-container li input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .leftbar-container,
+    .rightbar-container {
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .manual-todo-input-section h1 {
+        font-size: 1.2em;
+    }
+
+    .manual-todo-input-section input[type="text"] {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    .manual-todo-input-section button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+        max-width: 160px;
+    }
+
+    .rightbar-container h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .rightbar-container li {
+        padding: 10px 12px;
+        font-size: 0.95em;
+        margin-bottom: 8px;
+    }
+
+    .rightbar-container li input[type="checkbox"] {
+        margin-right: 8px;
+        transform: scale(1);
+    }
 }
